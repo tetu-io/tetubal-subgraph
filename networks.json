@@ -1,0 +1,8 @@
+{
+  "matic": {
+    "ERC20": {
+      "address": "0x915E49F7CD8B2b5763759c23D9463A74d5b5C1D5",
+      "startBlock": 41527427
+    }
+  }
+}
