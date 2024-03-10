@@ -4,5 +4,11 @@
       "address": "0x915E49F7CD8B2b5763759c23D9463A74d5b5C1D5",
       "startBlock": 41527427
     }
+  },
+  "sonic": {
+    "ERC20": {
+      "address": "0x17e9bfa16f8c0c3ee37f724a16888ebf20822ac8",
+      "startBlock": 22999657
+    }
   }
 }

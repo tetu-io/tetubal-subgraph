@@ -1,0 +1,6 @@
+/node_modules/
+/generated/
+/src/types/
+/.idea/
+/build/
+/yarn-error.log

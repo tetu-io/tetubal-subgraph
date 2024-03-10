@@ -4,21 +4,23 @@ schema:
 dataSources:
   - kind: ethereum
     name: ERC20
-    network: matic
+    network: sonic
     source:
-      address: "0x915E49F7CD8B2b5763759c23D9463A74d5b5C1D5"
-      abi: ERC20
-      startBlock: 41527427
+      abi: ERC20Abi
+      address: "0x17e9bfa16f8c0c3ee37f724a16888ebf20822ac8"
+      startBlock: 22999657
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
       language: wasm/assemblyscript
       entities:
-        - Upgraded
+        - TransactionHistoryEntity
+        - UserEntity
+        - UserBalanceHistoryEntity
       abis:
-        - name: ERC20
+        - name: ERC20Abi
           file: ./abis/ERC20.json
       eventHandlers:
-        - event: Upgraded(indexed address)
-          handler: handleUpgraded
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
       file: ./src/erc-20.ts

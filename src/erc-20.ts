@@ -1,15 +1,33 @@
-import { Upgraded as UpgradedEvent } from "../generated/ERC20/ERC20"
-import { Upgraded } from "../generated/schema"
+import { Transfer } from './types/ERC20/ERC20Abi';
+import { TransferHistoryEntity } from './types/schema';
+import { createUserBalanceHistory, getOrCreateUser } from './helpers/user-helper';
+import { getOrCreateToken } from './helpers/erc-20.helper';
 
-export function handleUpgraded(event: UpgradedEvent): void {
-  let entity = new Upgraded(
-    event.transaction.hash.concatI32(event.logIndex.toI32())
-  )
-  entity.implementation = event.params.implementation
+export function handleTransfer(event: Transfer): void {
+  const from = event.params.from;
+  const to = event.params.to;
+  const value = event.params.value;
+  const hash = event.transaction.hash.toHex();
+  const blockNumber = event.block.number;
+  const timestamp = event.block.timestamp;
 
-  entity.blockNumber = event.block.number
-  entity.blockTimestamp = event.block.timestamp
-  entity.transactionHash = event.transaction.hash
 
-  entity.save()
+  const transfer = new TransferHistoryEntity(hash);
+  transfer.from = from.toHexString();
+  transfer.to = to.toHexString();
+  transfer.value = value;
+  transfer.blockNumber = blockNumber;
+  transfer.blockTimestamp = timestamp;
+  transfer.save();
+
+  const fromUser = getOrCreateUser(from);
+  fromUser.balance = fromUser.balance.minus(value);
+  fromUser.save();
+  createUserBalanceHistory(fromUser, blockNumber, timestamp, hash);
+
+  const toUser = getOrCreateUser(to);
+  toUser.balance = toUser.balance.plus(value);
+  toUser.save();
+  createUserBalanceHistory(toUser, blockNumber, timestamp, hash);
+  getOrCreateToken(event.address.toHexString());
 }

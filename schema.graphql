@@ -1,7 +1,35 @@
-type Upgraded @entity(immutable: true) {
-  id: Bytes!
-  implementation: Bytes! # address
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
+type TransferHistoryEntity @entity(immutable: true) {
+    # tx hash
+    id: ID!
+    from: UserEntity!
+    to: UserEntity!
+    value: BigInt!
+    blockNumber: BigInt!
+    blockTimestamp: BigInt!
+}
+
+type UserEntity @entity {
+    id: ID!
+    balance: BigInt!
+    transactionsFrom: [TransferHistoryEntity!]! @derivedFrom(field: "from")
+    transactionsTo: [TransferHistoryEntity!]! @derivedFrom(field: "to")
+    history: [UserBalanceHistoryEntity!]! @derivedFrom(field: "user")
+}
+
+type UserBalanceHistoryEntity @entity(immutable: true) {
+    # user address - tx hash
+    id: ID!
+    user: UserEntity!
+    balance: BigInt!
+    blockNumber: BigInt!
+    blockTimestamp: BigInt!
+    hash: String!
+}
+
+type TokenEntity @entity {
+    id: ID!
+    name: String!
+    symbol: String!
+    decimals: Int!
+    totalSupply: BigInt!
 }
