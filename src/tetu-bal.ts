@@ -2,7 +2,7 @@ import { balanceOf$, totalSupply$ } from './helpers/erc-20.helper';
 import { BALANCER_VAULT, BRIBER, TETU_BAL, TETU_BAL_POWER } from './helpers/constant';
 import { BigDecimal } from '@graphprotocol/graph-ts';
 import { TetuBlockSnapshot } from './types/schema';
-import { Transfer } from './types/ERC20/ERC20Abi';
+import { Transfer } from './generated/ERC20Abi';
 
 export function handleTransfer(event: Transfer): void {
   const block = event.block;

@@ -1,6 +1,6 @@
 import { TokenEntity } from '../types/schema';
 import { Address, BigInt } from '@graphprotocol/graph-ts';
-import { ERC20Abi } from '../types/ERC20/ERC20Abi';
+import { ERC20Abi } from '../generated/ERC20Abi';
 
 export function getOrCreateToken(id: string): TokenEntity {
   let token = TokenEntity.load(id);

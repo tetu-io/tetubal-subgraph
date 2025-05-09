@@ -1,9 +1,7 @@
-import { Transfer } from './types/ERC20/ERC20Abi';
 import { TetuBlockSnapshot, TransferHistoryEntity } from './types/schema';
 import { createUserBalanceHistory, getOrCreateUser } from './helpers/user-helper';
 import { balanceOf$, getOrCreateToken, totalSupply$ } from './helpers/erc-20.helper';
-import { BigDecimal, ethereum } from '@graphprotocol/graph-ts';
-import { BALANCER_VAULT, BRIBER, TETU_BAL, TETU_BAL_POWER } from './helpers/constant';
+import { Transfer } from './generated/ERC20Abi';
 
 export function handleTransfer(event: Transfer): void {
   const from = event.params.from;
