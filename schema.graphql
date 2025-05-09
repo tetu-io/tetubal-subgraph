@@ -33,3 +33,14 @@ type TokenEntity @entity {
     decimals: Int!
     totalSupply: BigInt!
 }
+
+type TetuBlockSnapshot @entity {
+    id: ID!
+    xTetuBal: BigDecimal!
+    xTetuBalPower: BigDecimal!
+    totalSupply: BigDecimal!
+    tetuBalPercent: BigDecimal!
+    tetuBalPowerPercent: BigDecimal!
+    block: BigInt!
+    timestamp: BigInt!
+}

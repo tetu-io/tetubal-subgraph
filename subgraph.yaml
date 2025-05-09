@@ -1,17 +1,17 @@
-specVersion: 0.0.5
+specVersion: 0.0.8
 schema:
   file: ./schema.graphql
 dataSources:
   - kind: ethereum
-    name: ERC20
-    network: sonic
+    name: XTetuBal
+    network: matic
     source:
       abi: ERC20Abi
-      address: "0x17e9bfa16f8c0c3ee37f724a16888ebf20822ac8"
-      startBlock: 22999657
+      address: "0x915E49F7CD8B2b5763759c23D9463A74d5b5C1D5"
+      startBlock: 41527427
     mapping:
       kind: ethereum/events
-      apiVersion: 0.0.7
+      apiVersion: 0.0.8
       language: wasm/assemblyscript
       entities:
         - TransactionHistoryEntity
@@ -23,4 +23,26 @@ dataSources:
       eventHandlers:
         - event: Transfer(indexed address,indexed address,uint256)
           handler: handleTransfer
-      file: ./src/erc-20.ts
+      file: ./src/x-tetu-bal.ts
+  - kind: ethereum
+    name: TetuBal
+    network: matic
+    source:
+      abi: ERC20Abi
+      address: "0x7fC9E0Aa043787BFad28e29632AdA302C790Ce33"
+      startBlock: 26770061
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.8
+      language: wasm/assemblyscript
+      entities:
+        - TransactionHistoryEntity
+        - UserEntity
+        - UserBalanceHistoryEntity
+      abis:
+        - name: ERC20Abi
+          file: ./abis/ERC20.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+      file: ./src/tetu-bal.ts

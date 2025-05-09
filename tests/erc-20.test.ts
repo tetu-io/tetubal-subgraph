@@ -9,7 +9,7 @@ import {
 import { Address } from "@graphprotocol/graph-ts"
 import { Upgraded } from "../generated/schema"
 import { Upgraded as UpgradedEvent } from "../generated/ERC20/ERC20"
-import { handleUpgraded } from "../src/erc-20"
+import { handleUpgraded } from "../src/x-tetu-bal"
 import { createUpgradedEvent } from "./erc-20-utils"
 
 // Tests structure (matchstick-as >=0.5.0)
