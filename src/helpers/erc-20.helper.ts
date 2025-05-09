@@ -1,5 +1,5 @@
 import { TokenEntity } from '../types/schema';
-import { Address } from '@graphprotocol/graph-ts';
+import { Address, BigInt } from '@graphprotocol/graph-ts';
 import { ERC20Abi } from '../types/ERC20/ERC20Abi';
 
 export function getOrCreateToken(id: string): TokenEntity {
@@ -14,4 +14,14 @@ export function getOrCreateToken(id: string): TokenEntity {
   token.totalSupply = erc20.totalSupply();
   token.save();
   return token;
+}
+
+export function balanceOf$(token: Address, address: Address): BigInt {
+  const tryVal = ERC20Abi.bind(token).try_balanceOf(address);
+  return tryVal.reverted ? BigInt.fromI32(0) : tryVal.value;
+}
+
+export function totalSupply$(token: Address): BigInt {
+  const tryVal = ERC20Abi.bind(token).try_totalSupply();
+  return tryVal.reverted ? BigInt.fromI32(0) : tryVal.value;
 }

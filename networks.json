@@ -1,14 +1,12 @@
 {
   "matic": {
-    "ERC20": {
+    "XTetuBal": {
       "address": "0x915E49F7CD8B2b5763759c23D9463A74d5b5C1D5",
       "startBlock": 41527427
-    }
-  },
-  "sonic": {
-    "ERC20": {
-      "address": "0x17e9bfa16f8c0c3ee37f724a16888ebf20822ac8",
-      "startBlock": 22999657
+    },
+    "TetuBal": {
+      "address": "0x7fC9E0Aa043787BFad28e29632AdA302C790Ce33",
+      "startBlock": 26770061
     }
   }
 }
