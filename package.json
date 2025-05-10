@@ -7,7 +7,7 @@
     "build": "graph build",
     "test": "graph test",
 
-    "deploy": "graph deploy --studio -l v0.0.3 tetu-bal",
+    "deploy": "graph deploy --studio -l v0.0.4 tetu-bal",
     "deploy-hosted": "graph deploy --node https://api.thegraph.com/deploy/ alexandersazonof/tetubal",
 
     "create-local": "graph create --node http://localhost:8020/ alexandersazonof/tetubal",

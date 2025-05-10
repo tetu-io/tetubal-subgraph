@@ -2,7 +2,7 @@ specVersion: 1.3.0
 schema:
   file: ./schema.graphql
 indexerHints:
-  prune: auto
+  prune: never
 dataSources:
   - kind: ethereum
     name: XTetuBal
