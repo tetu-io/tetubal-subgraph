@@ -7,17 +7,8 @@
     "build": "graph build",
     "test": "graph test",
 
-    "deploy": "graph deploy --studio -l v0.0.4 tetu-bal",
-    "deploy-hosted": "graph deploy --node https://api.thegraph.com/deploy/ alexandersazonof/tetubal",
-
-    "create-local": "graph create --node http://localhost:8020/ alexandersazonof/tetubal",
-    "remove-local": "graph remove --node http://localhost:8020/ alexandersazonof/tetubal",
-    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 alexandersazonof/tetubal",
-
-
-    "create-sacra": "graph create --node https://graph.public-sonic.fantom.network/service alexandersazonof/sacra-sonic-token",
-    "remove-sacra": "graph remove --node https://graph.public-sonic.fantom.network/service alexandersazonof/sacra-sonic-token",
-    "deploy-sacra": "graph deploy --network sonic --node https://graph.public-sonic.fantom.network/service --ipfs https://graph.public-sonic.fantom.network/ alexandersazonof/sacra-sonic-token -l v0.0.1"
+    "deploy": "graph deploy --studio -l v0.0.4 tetubal",
+    "deploy-gold": "goldsky subgraph deploy tetubal/1"
   },
   "dependencies": {
     "@graphprotocol/graph-cli": "0.66.0",
