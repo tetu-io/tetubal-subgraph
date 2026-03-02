@@ -8,7 +8,7 @@ type TransferHistoryEntity @entity(immutable: true) {
     blockTimestamp: BigInt!
 }
 
-type UserEntity @entity {
+type UserEntity @entity(immutable: false) {
     id: ID!
     balance: BigInt!
     transactionsFrom: [TransferHistoryEntity!]! @derivedFrom(field: "from")
@@ -26,7 +26,7 @@ type UserBalanceHistoryEntity @entity(immutable: true) {
     hash: String!
 }
 
-type TokenEntity @entity {
+type TokenEntity @entity(immutable: false) {
     id: ID!
     name: String!
     symbol: String!
@@ -34,7 +34,7 @@ type TokenEntity @entity {
     totalSupply: BigInt!
 }
 
-type TetuBlockSnapshot @entity {
+type TetuBlockSnapshot @entity(immutable: false) {
     id: ID!
     xTetuBal: BigDecimal!
     xTetuBalPower: BigDecimal!
@@ -45,7 +45,7 @@ type TetuBlockSnapshot @entity {
     timestamp: BigInt!
 }
 
-type DelegationEntity @entity {
+type DelegationEntity @entity(immutable: false) {
     id: ID!
     delegator: String!
     delegate: String
@@ -54,7 +54,7 @@ type DelegationEntity @entity {
     updatedAtTs: BigInt!
 }
 
-type UserVotingPowerEntity @entity {
+type UserVotingPowerEntity @entity(immutable: false) {
     id: ID!
     ownBalance: BigInt!
     delegatedInBalance: BigInt!
