@@ -8,7 +8,7 @@
     "test": "graph test",
 
     "deploy": "graph deploy --studio -l v0.0.4 tetubal",
-    "deploy-gold": "goldsky subgraph deploy tetubal/1"
+    "deploy-gold": "goldsky subgraph deploy tetubal/2"
   },
   "dependencies": {
     "@graphprotocol/graph-cli": "0.98.1",
