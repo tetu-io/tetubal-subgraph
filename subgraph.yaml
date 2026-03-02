@@ -27,6 +27,26 @@ dataSources:
           handler: handleTransfer
       file: ./src/x-tetu-bal.ts
   - kind: ethereum
+    name: TetuBalPower
+    network: matic
+    source:
+      abi: ERC20Abi
+      address: "0x8FFBa974Efa7C262C97b9521449Fd2B3c69bE4E6"
+      startBlock: 26770061
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - UserVotingPowerEntity
+      abis:
+        - name: ERC20Abi
+          file: ./abis/ERC20.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+      file: ./src/tetu-bal-power.ts
+  - kind: ethereum
     name: TetuBal
     network: matic
     source:
@@ -48,3 +68,30 @@ dataSources:
         - event: Transfer(indexed address,indexed address,uint256)
           handler: handleTransfer
       file: ./src/tetu-bal.ts
+  - kind: ethereum
+    name: DelegateRegistry
+    network: matic
+    source:
+      abi: DelegateRegistry
+      address: "0x469788fE6E9E9681C6ebF3bF78e7Fd26Fc015446"
+      startBlock: 26770061
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - DelegationEntity
+        - UserVotingPowerEntity
+      abis:
+        - name: DelegateRegistry
+          file: ./abis/DelegateRegistry.json
+        - name: ERC20Abi
+          file: ./abis/ERC20.json
+      eventHandlers:
+        - event: SetDelegate(indexed address,indexed bytes32,indexed address)
+          handler: handleSetDelegate
+        - event: ClearDelegate(indexed address,indexed bytes32)
+          handler: handleClearDelegate
+        - event: ClearDelegate(indexed address,indexed bytes32,indexed address)
+          handler: handleClearDelegateWithDelegate
+      file: ./src/delegate-registry.ts

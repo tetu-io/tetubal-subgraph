@@ -44,3 +44,22 @@ type TetuBlockSnapshot @entity {
     block: BigInt!
     timestamp: BigInt!
 }
+
+type DelegationEntity @entity {
+    id: ID!
+    delegator: String!
+    delegate: String
+    delegationId: String!
+    updatedAtBlock: BigInt!
+    updatedAtTs: BigInt!
+}
+
+type UserVotingPowerEntity @entity {
+    id: ID!
+    ownBalance: BigInt!
+    delegatedInBalance: BigInt!
+    delegatedOutTo: String
+    effectiveVotingPower: BigInt!
+    updatedAtBlock: BigInt!
+    updatedAtTs: BigInt!
+}
